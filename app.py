@@ -1,8 +1,8 @@
-from flask import Flask
-from config import Config
-from flask import render_template
+import os
+from flask import Flask, request, flash, render_template, redirect, url_for
+from config import Config 
 from forms import UploadForm
-
+from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -11,7 +11,25 @@ app.config.from_object(Config)
 def index():
     return 'index'
 
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
 @app.route('/uploader', methods=['GET', 'POST'])
 def uploader():
     form = UploadForm()
+
+    if request.method == 'POST':
+        # check if the post request has the file part
+        if 'file' not in request.files:
+            flash('No file part')
+            return redirect(request.url)
+        file = request.files['file']
+        # if user does not select file, browser also
+        # submit an empty part without filename
+        if file.filename == '':
+            flash('No selected file')
+            return redirect(request.url)
+
+
     return render_template('uploader.html', form=form)
