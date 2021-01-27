@@ -11,6 +11,10 @@
         <form method="POST" enctype="multipart/form-data" action="uploader">
         {{ form.file }}
         {{ form.submit }}
+        {{ form.csrf_token }}
+        {% if form.errors %}
+        <br/>{{ ', '.join(form.file.errors) }}
+        {% endif %}
         </form>
     </body>
 
