@@ -17,5 +17,5 @@ def uploader():
     if form.validate_on_submit():
         f = form.file.data
         filename = secure_filename(f.filename)
-        f.save(os.path.join(app.config['UPLOAD_FOLDER'],filename))
+        f.save(os.path.join(app.config['UPLOAD_FOLDER'],'date_goes_here' + os.path.splitext(filename)[1]))
     return render_template('uploader.html', form=form)

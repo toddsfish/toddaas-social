@@ -13,7 +13,7 @@
         {{ form.submit }}
         {{ form.csrf_token }}
         {% if form.errors %}
-        <br/>{{ ', '.join(form.file.errors) }}
+        <br/><span>{{ ', '.join(form.file.errors) }}</span>
         {% endif %}
         </form>
     </body>
