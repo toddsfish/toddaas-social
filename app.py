@@ -1,4 +1,5 @@
 import os
+import time
 from flask import Flask, flash, render_template, redirect, url_for
 from config import Config 
 from forms import UploadForm
@@ -17,5 +18,5 @@ def uploader():
     if form.validate_on_submit():
         f = form.file.data
         filename = secure_filename(f.filename)
-        f.save(os.path.join(app.config['UPLOAD_FOLDER'],'date_goes_here' + os.path.splitext(filename)[1]))
+        f.save(os.path.join(app.config['UPLOAD_FOLDER'], time.strftime('%Y%m%dT%H%M%S', time.gmtime()) + os.path.splitext(filename)[1]))
     return render_template('uploader.html', form=form)
