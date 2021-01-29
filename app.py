@@ -27,9 +27,10 @@ def uploader():
     if form.validate_on_submit():
         f = form.file.data
         filename = secure_filename(f.filename)
+        file_ext = os.path.splitext(filename)[1].lower()
+        print(file_ext)
         if filename != '':
-            file_ext = os.path.splitext(filename)[1]
             if file_ext != validate_image(f.stream):
-                return render_template('uploader.html', form=form, invalid="invalid file format")
+                return render_template('uploader.html', form=form, invalid="Invalid image format!")
         f.save(os.path.join(app.config['UPLOAD_FOLDER'], time.strftime('%Y%m%dT%H%M%S', time.gmtime()) + file_ext))
     return render_template('uploader.html', form=form)

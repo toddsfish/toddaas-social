@@ -5,4 +5,4 @@ class Config(object):
     # Don’t read more than this many bytes from incoming request data.
     MAX_CONTENT_LENGTH = 1024 * 1024 * 10
     UPLOAD_FOLDER = './uploads'
-    ALLOWED_EXTENSIONS = ['txt','jpg','jpeg']
+    ALLOWED_EXTENSIONS = ['jpg','jpeg']
