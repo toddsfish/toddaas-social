@@ -17,6 +17,12 @@
         {% endif %}
         <br/><span>{{ invalid }}</span>
         </form>
+        {% for file in files %}
+        {% set file_ext = file.split('.') %}
+        {% if file_ext[1] != 'gitignore' %}
+        <img src="{{ url_for('uploads', filename=file) }}" style="width: 64px">
+        {% endif %}
+        {% endfor %}
     </body>
 
 </html>

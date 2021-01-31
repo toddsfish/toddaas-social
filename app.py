@@ -1,7 +1,7 @@
 import os
 import time
 import imghdr
-from flask import Flask, flash, render_template, redirect, url_for, abort 
+from flask import Flask, flash, render_template, redirect, url_for, abort, send_from_directory
 from config import Config 
 from forms import UploadForm
 from werkzeug.utils import secure_filename
@@ -28,9 +28,13 @@ def uploader():
         f = form.file.data
         filename = secure_filename(f.filename)
         file_ext = os.path.splitext(filename)[1].lower()
-        print(file_ext)
         if filename != '':
             if file_ext != validate_image(f.stream):
                 return render_template('uploader.html', form=form, invalid="Invalid image format!")
         f.save(os.path.join(app.config['UPLOAD_FOLDER'], time.strftime('%Y%m%dT%H%M%S', time.gmtime()) + file_ext))
-    return render_template('uploader.html', form=form)
+    files = os.listdir(app.config['UPLOAD_FOLDER'])
+    return render_template('uploader.html', form=form, files=files)
+
+@app.route('/uploads/<filename>')
+def uploads(filename):
+    return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
