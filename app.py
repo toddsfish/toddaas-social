@@ -19,7 +19,8 @@ def validate_image(stream):
 
 @app.route('/')
 def index():
-    return 'index'
+    files = os.listdir(app.config['UPLOAD_FOLDER'])
+    return render_template('index.html', files=files)
 
 @app.route('/uploader', methods=['GET', 'POST'])
 def uploader():
@@ -30,10 +31,10 @@ def uploader():
         file_ext = os.path.splitext(filename)[1].lower()
         if filename != '':
             if file_ext != validate_image(f.stream):
-                return render_template('uploader.html', form=form, invalid="Invalid image format!")
+                return render_template('uploader.html', form=form, invalid='Invalid image format!')
         f.save(os.path.join(app.config['UPLOAD_FOLDER'], time.strftime('%Y%m%dT%H%M%S', time.gmtime()) + file_ext))
-    files = os.listdir(app.config['UPLOAD_FOLDER'])
-    return render_template('uploader.html', form=form, files=files)
+        return redirect(url_for('index'))
+    return render_template('uploader.html', form=form)
 
 @app.route('/uploads/<filename>')
 def uploads(filename):
