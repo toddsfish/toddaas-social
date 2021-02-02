@@ -34,6 +34,15 @@ def uploader():
                 return render_template('uploader.html', form=form, invalid='Invalid image format!')
         f.save(os.path.join(app.config['UPLOAD_FOLDER'], time.strftime('%Y%m%dT%H%M%S', time.gmtime()) + file_ext))
         return redirect(url_for('index'))
+        '''
+        https://flask.palletsprojects.com/en/1.1.x/api/#flask.redirect 
+        Returns a response object (a WSGI application) that, if called, redirects the client to the target location.  Supported codes are 301, 302, 303, 305, 307, and 308. 300 is not supported because it’s not a real redirect and 304 because it’s the answer for a request with a 
+
+        https://flask.palletsprojects.com/en/1.1.x/api/#flask.url_for
+        flask.url_for(endpoint, **values)
+        Generates a URL to the given endpoint with the method provided.
+        Variable arguments that are unknown to the target endpoint are appended to the generated URL as query arguments. 
+        '''
     return render_template('uploader.html', form=form)
 
 @app.route('/uploads/<filename>')
