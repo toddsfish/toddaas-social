@@ -48,3 +48,7 @@ def uploader():
 @app.route('/uploads/<filename>')
 def uploads(filename):
     return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
+    '''
+    https://flask.palletsprojects.com/en/1.1.x/api/#flask.send_from_directory
+    Send a file from a given directory with send_file(). This is a secure way to quickly expose static files from an upload folder or something similar.
+    '''

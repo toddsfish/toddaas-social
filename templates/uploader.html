@@ -1,22 +1,13 @@
-<!doctype html>
-<html lang="EN">
-    
-    <head>
-        <title>toddaas-social</title>
-        <meta charset="utf-8">
-        <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
-    </head>
+{% extends 'layout.html' %}
 
-    <body>
-        <form method="POST" enctype="multipart/form-data" action="uploader">
+{% block content %}
+    <form method="POST" enctype="multipart/form-data" action="uploader">
         {{ form.file }}
         {{ form.submit }}
         {{ form.csrf_token }}
         {% if form.errors %}
-        <br/><span>{{ ', '.join(form.file.errors) }}</span>
+            <br/><span>{{ ', '.join(form.file.errors) }}</span>
         {% endif %}
         <br/><span>{{ invalid }}</span>
-        </form>
-    </body>
-
-</html>
+    </form>
+{% endblock %}
