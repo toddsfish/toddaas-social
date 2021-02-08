@@ -1,10 +1,17 @@
 {% extends 'layout.html' %}
 
-{% block content %}
-    {% for file in files %}
-    {% set file_ext = file.split('.') %}
-    {% if file_ext[1] != 'gitignore' %}
-    <img src="{{ url_for('uploads', filename=file) }}" style="width: 64px">
-    {% endif %}
-    {% endfor %}
-{% endblock %}
+    {% block content %}
+        <div class="row">
+            <div class="six columns">
+                {% for file in files %}
+                {% set file_ext = file.split('.') %}
+                {% if file_ext[1] != 'gitignore' %}
+                <img src="{{ url_for('uploads', filename=file) }}" style="width: 64px">
+                {% endif %}
+                {% endfor %}
+            </div>
+            <div class="six columns">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi quaerat eius, labore voluptates maiores, repellendus ab ipsa fugiat esse veritatis dolorum at, nam id facilis quos ex ullam error. Quasi.</p>
+            </div>
+        </div>
+    {% endblock %}

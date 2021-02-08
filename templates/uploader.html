@@ -1,13 +1,17 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-    <form method="POST" enctype="multipart/form-data" action="uploader">
-        {{ form.file }}
-        {{ form.submit }}
-        {{ form.csrf_token }}
-        {% if form.errors %}
-            <br/><span>{{ ', '.join(form.file.errors) }}</span>
-        {% endif %}
-        <br/><span>{{ invalid }}</span>
-    </form>
+    <div class="row">
+        <div class="twelve columns">
+            <form method="POST" enctype="multipart/form-data" action="uploader">
+                {{ form.file }}
+                {{ form.submit }}
+                {{ form.csrf_token }}
+                {% if form.errors %}
+                    <br/><span>{{ ', '.join(form.file.errors) }}</span>
+                {% endif %}
+                <br/><span>{{ invalid }}</span>
+            </form>
+        </div>
+    </div>
 {% endblock %}
