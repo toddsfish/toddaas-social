@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Londrina+Shadow&display=swap');
+
+.logo {
+    font-family: 'Londrina Shadow', cursive;
+    color: #5b7975;
+    text-align: center;
+    text-decoration: none;
+}
+
+h1.logo {
+    margin-top: 20px;
+}   
