@@ -1,12 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Londrina+Shadow&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Chewy&display=swap');
 
 .logo {
-    font-family: 'Londrina Shadow', cursive;
-    color: #5b7975;
+    font-family: 'Chewy', cursive;
+    color: #b8e29c;
     text-align: center;
     text-decoration: none;
 }
 
 h1.logo {
     margin-top: 20px;
-}   
+}
+
+.twelve.columns.forms {
+    text-align: center;
+}
+
+form {
+    /* display: inline-block; */
+}
