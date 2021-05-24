@@ -15,11 +15,22 @@
         <div class="container">
             <div class="row">
                 <div class="12 columns">
-                    <a href="{{ url_for('uploader')}}" class="logo"><h1 class="logo">TODDaaSagram</h1></a>
+                    <a href="{{ url_for('uploader')}}" class="logo"><h1 id="logo" class="logo">TODDaaSagram</h1></a>
                 </div>
             </div>
             {% block content %}{% endblock %}
         </div>
+        <script>
+            let logo = document.getElementById("logo");
+            let logoColor = swapColor();
+            logo.classList.add(logoColor);
+
+            function swapColor() {
+                let colors = ["green", "purple", "orange"]
+                let color = colors[Math.floor(Math.random() * colors.length)];
+                return color;
+            }
+        </script>
     </body>
 
 </html>

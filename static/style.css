@@ -2,9 +2,20 @@
 
 .logo {
     font-family: 'Chewy', cursive;
-    color: #b8e29c;
     text-align: center;
     text-decoration: none;
+}
+
+.logo.green {
+    color: #c7f77f;
+}
+
+.logo.purple {
+    color: #d99dfc7e;
+}
+
+.logo.orange {
+    color: #facb8e;
 }
 
 h1.logo {
