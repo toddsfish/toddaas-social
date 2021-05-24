@@ -6,7 +6,7 @@
                 {% for file in files %}
                 {% set file_ext = file.split('.') %}
                 {% if file_ext[1] != 'gitignore' %}
-                <a href={{ url_for('uploads', filename=file) }}><img src="{{ url_for('uploads', filename=file) }}" style="width: 100px"></a>
+                <a href={{ url_for('index' }}><img src="{{ url_for('uploads', filename=file) }}" style="width: 100px"></a>
                 {% endif %}
                 {% endfor %}
             </div>
