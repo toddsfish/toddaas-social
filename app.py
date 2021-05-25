@@ -17,7 +17,7 @@ def validate_image(stream):
         return None
     return '.' + (format if format != 'jpeg' else 'jpg')
 
-@app.route('/'
+@app.route('/')
 def index():
     files = os.listdir(app.config['UPLOAD_FOLDER'])
     return render_template('index.html', files=files)

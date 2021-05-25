@@ -11,11 +11,15 @@
 }
 
 .logo.purple {
-    color: #39005a7e;
+    color: #a406ff;
 }
 
 .logo.orange {
-    color: #693e06;
+    color: #ffd900;
+}
+
+.logo.blue {
+    color: #06c3fd;
 }
 
 h1.logo {
